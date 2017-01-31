@@ -1,3 +1,12 @@
+-- 2.1 Glasgow Haskell Compiler
+
+-- 2.3 Standard Prelude
+
+-- 2.4 Function Application
+
+-- 2.5 Haskell Scripts
+-- naming requirements, layout rule, tabs, comments
+
 double x = x + x
 quadruple x = double (double x)
 -- factorial of a positive integer
@@ -11,6 +20,8 @@ a = b + c
         b = 1
         c = 2
 d = a * 2
+
+-- Exercises
 n = a `div` length xs
     where
         a = 10
