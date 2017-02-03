@@ -78,3 +78,32 @@ htwice f        = f `comp` f
 hsumsqreven     = sum `comp` map (^2) `comp` filter even
 
 -- Exercises
+hall :: (a -> Bool) -> [a] -> Bool
+-- hall f xs       = hfand [f x | x <- xs]
+hall f          = and . map f
+
+hany :: (a -> Bool) -> [a] -> Bool
+-- hany f xs       = hfor [f x | x <- xs]
+hany f          = or . map f
+
+htakeWhile :: (a -> Bool) -> [a] -> [a]
+htakeWhile _ [] = [] 
+htakeWhile f (x:xs) 
+    | f x       = x : htakeWhile f xs
+    | otherwise = [] 
+
+hdropWhile :: (a -> Bool) -> [a] -> [a]
+hdropWhile _ [] = []
+hdropWhile f (x:xs)
+    | f x       = hdropWhile f xs
+    | otherwise = x : xs
+
+hfmap :: (a -> b) -> [a] -> [b]
+hfmap f         = hfoldr (\x xs -> f x : xs) []
+
+hffilter :: (a -> Bool) -> [a] -> [a]
+hffilter f      = hfoldr (\x xs -> if f x then x:xs else xs) 
+
+dec2int :: [Int] -> Int
+dec2int         = hfoldl (\x y -> 10*x + y) 0
+
